@@ -1,0 +1,58 @@
+{
+  "name": "json-schema-js-gui-model",
+  "version": "0.1.0",
+  "description": "Handy gui model and associated translator that can be used to construct javascript UI forms from json-schemas",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "watch": "tsc && npm-run-all --continue-on-error --parallel build:watch test:watch",
+    "test": "tsc && mocha dist/test/index.js",
+    "test:watch": "mocha --watch dist/test/index.js",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "clean": "rimraf dist",
+    "lint": "tslint src/**/*.ts"
+  },
+  "bin": {
+    "mapToGuiModel": "/dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmc41/json-schema-js-gui-model.git"
+  },
+  "keywords": [
+    "json-schema",
+    "javascript",
+    "typescript",
+    "gui",
+    "model"
+  ],
+  "author": "Morten M. Christensen (mmc41)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmc41/json-schema-js-gui-model/issues"
+  },
+  "homepage": "https://github.com/mmc41/json-schema-js-gui-model#readme",
+  "devDependencies": {
+    "@types/chai": "3.4.34",
+    "@types/mocha": "2.2.32",
+    "@types/node": "^6.0.46",
+    "chai": "3.5.0",
+    "mocha": "3.1.2",
+    "nodemon": "1.11.0",
+    "npm-run-all": "3.1.1",
+    "rimraf": "2.5.4",
+    "ts-npm-lint": "^0.1.0",
+    "tslint": "3.15.1",
+    "typescript": "2.0.7"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": "~3.0.0"
+  }
+}

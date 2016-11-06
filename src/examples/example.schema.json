@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "authentication": {
+      "type": "object",
+      "title": "Authentication",
+      "description": "an authentication description here",
+      "properties": {
+        "user": {
+          "type": "string",
+          "minLength": 1,
+          "default": "",
+          "title" : "User",
+          "description": "a username"
+        },
+        "password": {
+          "type": "string",
+          "minLength": 1,
+          "default": "",
+          "title" : "Password",
+          "description": "a password"
+        },
+        "scheme": {
+          "type": "string",
+          "default": "basic"
+        },
+        "preemptive": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "required": [
+        "user",
+        "password"
+      ]
+    },
+    "server": {
+      "type": "object",
+      "title": "Server",
+      "properties": {
+        "host": {
+          "type": "string",
+          "default": ""
+        },
+        "port": {
+          "type": "integer",
+          "multipleOf": 1,
+          "maximum": 65535,
+          "minimum": 0,
+          "exclusiveMaximum": false,
+          "exclusiveMinimum": false,
+          "default": 80
+        },
+        "protocol": {
+          "type": "string",
+          "default": "http",
+          "enum" : ["http", "ftp"]
+        }
+      }
+    }
+  }
+}
