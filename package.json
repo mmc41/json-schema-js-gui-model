@@ -14,7 +14,7 @@
     "lint": "tslint src/**/*.ts"
   },
   "bin": {
-    "mapToGuiModel": "/dist/cli/index.js"
+    "mapToGuiModel": "dist/cli/index.js"
   },
   "files": [
     "dist",
