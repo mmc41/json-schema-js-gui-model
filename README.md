@@ -13,10 +13,10 @@ and with a modern es6 capable browser.
 
 ## Getting started
 
+```npm install json-schema-js-gui-model```
+
 Schemas can be translated using the exported GuiModelMapper class or by the the command line
 command *mapToGuiModel* when the library is installed with -g option by npm.
-
-```npm install json-schema-js-gui-model```
 
 Code:
 ```typescript
@@ -40,7 +40,7 @@ contain any validation elements.
 
 The constructed UI should still use the json schema for validation purposes. If the form is 
 carefully constructed the output will conform to the underlaying json schema when valid. A fast
-schema validator like [ajv](https://github.com/epoberezkin/ajv) can easily do validation of a from 
+schema validator like [ajv](https://github.com/epoberezkin/ajv) can easily do validation of a form 
 in realtime at each keypress if necessary. 
 
 ## Example from schema to gui model to ui form:
