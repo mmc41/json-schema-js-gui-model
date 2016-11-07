@@ -1,7 +1,7 @@
 {
   "name": "json-schema-js-gui-model",
-  "version": "0.1.1",
-  "description": "Handy gui model and associated translator that can be used to construct javascript UI forms from json-schemas",
+  "version": "0.1.2",
+  "description": "Handy gui model and associated translator that is useful when constructing javascript UI forms from json-schemas",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -11,7 +11,8 @@
     "build": "tsc",
     "build:watch": "tsc -w",
     "clean": "rimraf dist",
-    "lint": "tslint src/**/*.ts"
+    "lint": "tslint src/**/*.ts",
+    "mapToGuiModel": "node dist/cli/index.js"
   },
   "bin": {
     "mapToGuiModel": "dist/cli/index.js"
