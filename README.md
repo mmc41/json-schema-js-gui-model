@@ -1,7 +1,7 @@
 # json-schema-js-gui-model
 Handy framework-agnostic gui model and associated translator that can be used as a basis when constructing 
 dynamic javascript UI forms (in any web framework) from json-schemas. For details, refer to the declared gui
-model [here](dist/lib/gui-model.d.ts) and the translator [here](dist/lib/gui-model.mapper.d.ts).
+model [here](src/lib/gui-model.ts) and the translator [here](src/lib/gui-model.mapper.ts).
 
 Clients of this library are themselves responsible for constructing a GUI using
 the gui model provided by this library. Such UI code will be different depending
