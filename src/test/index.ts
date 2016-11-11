@@ -2,7 +2,7 @@
 
 import { JsonSchema } from '../dependencies/json-schema';
 import { GuiModelMapper } from '../lib/gui-model.mapper';
-import { GuiModel } from '../lib/gui-model';
+import { GuiModel, TypedField } from '../lib/gui-model';
 
 import { simple_schema1, simple_schema2, complex_schema1,
          test_different_elements_schema1, test_groups_schema1,
@@ -15,6 +15,10 @@ import { simple_gui_model1 as expected_simple_gui_model1,
          complex_gui_model1 as expected_complex_gui_model1,
          invalid_gui_model1 as expected_invalid_gui_model1
        } from './gui-models';
+
+import { EMPTY_GUI_MODEL } from '../lib/constants';
+
+import { maxGuiElementDepth } from '../lib/util';
 
 import { deeplyStripUndefined } from './test-util';
 import { expect } from 'chai';
@@ -57,3 +61,35 @@ describe('Service: GuiModelMapper', () => {
     expect(guiModel).to.deep.equal(expected_invalid_gui_model1);
   });
 });
+
+describe('Utils', () => {
+ it('should calculate maxDepth of empty model correctly', () => {
+    let depth = maxGuiElementDepth(EMPTY_GUI_MODEL);
+    expect(depth).to.equal(1);
+  });
+
+  it('should calculate maxDepth of field correctly', () => {
+    let field: TypedField<string> = {
+        kind: 'field',
+        name: '',
+        controlType: 'input',
+        label: '',
+        tooltip: '',
+        dataObjectPath: '',
+        defaultValue: '',
+        values: [],
+        required: true,
+        type: 'string',
+        subType: 'text'
+    };
+
+    let depth = maxGuiElementDepth(field);
+    expect(depth).to.equal(1);
+  });
+
+  it('should calculate maxDepth of complex example correctly', () => {
+    let depth = maxGuiElementDepth(expected_complex_gui_model1);
+    expect(depth).to.equal(3);
+  });
+});
+

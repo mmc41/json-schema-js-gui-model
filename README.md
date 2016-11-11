@@ -1,11 +1,11 @@
 # json-schema-js-gui-model
 Handy framework-agnostic gui model and associated translator that can be used as a basis when constructing 
 dynamic javascript UI forms (in any web framework) from json-schemas. For details, refer to the declared gui
-model [here](src/lib/gui-model.ts) and the translator [here](src/lib/gui-model.mapper.ts).
+model [here](src/lib/gui-model.ts) and the translator declared at the bottom of this [file](src/lib/gui-model.mapper.ts).
 
-Clients of this library are themselves responsible for constructing a GUI using
-the gui model provided by this library. Such UI code will be different depending
-on the exact web framework used and this out of scope of this more
+Clients of this library are themselves responsible for constructing a UI form
+dynamically using the gui model provided by this library. Such UI code will be
+different depending on the exact web framework used and this out of scope of this more
 fundamental and general project.
 
 This library is on purpose keept small with no runtime-dependencies. It can be used from both nodejs v6+ 
@@ -118,7 +118,7 @@ in realtime at each keypress if necessary.
   "kind": "group",
   "name": "",
   "controlType": "group",
-  "settingsObjectPath": "",
+  "dataObjectPath": "",
   "label": "",
   "tooltip": "",
   "isRoot": true,
@@ -128,7 +128,7 @@ in realtime at each keypress if necessary.
       "kind": "group",
       "name": "authentication",
       "controlType": "group",
-      "settingsObjectPath": "authentication",
+      "dataObjectPath": "authentication",
       "label": "Authentication",
       "tooltip": "an authentication description here",
       "isRoot": false,
@@ -140,7 +140,7 @@ in realtime at each keypress if necessary.
           "controlType": "input",
           "label": "User",
           "tooltip": "a username",
-          "settingsObjectPath": "authentication.user",
+          "dataObjectPath": "authentication.user",
           "defaultValue": "",
           "required": true,
           "type": "string",
@@ -152,7 +152,7 @@ in realtime at each keypress if necessary.
           "controlType": "input",
           "label": "Password",
           "tooltip": "a password",
-          "settingsObjectPath": "authentication.password",
+          "dataObjectPath": "authentication.password",
           "defaultValue": "",
           "required": true,
           "type": "string",
@@ -164,7 +164,7 @@ in realtime at each keypress if necessary.
           "controlType": "input",
           "label": "scheme",
           "tooltip": "",
-          "settingsObjectPath": "authentication.scheme",
+          "dataObjectPath": "authentication.scheme",
           "defaultValue": "basic",
           "required": false,
           "type": "string",
@@ -176,7 +176,7 @@ in realtime at each keypress if necessary.
           "controlType": "yesno",
           "label": "preemptive",
           "tooltip": "",
-          "settingsObjectPath": "authentication.preemptive",
+          "dataObjectPath": "authentication.preemptive",
           "defaultValue": true,
           "required": false,
           "type": "boolean",
@@ -188,7 +188,7 @@ in realtime at each keypress if necessary.
       "kind": "group",
       "name": "server",
       "controlType": "group",
-      "settingsObjectPath": "server",
+      "dataObjectPath": "server",
       "label": "Server",
       "tooltip": "",
       "isRoot": false,
@@ -200,7 +200,7 @@ in realtime at each keypress if necessary.
           "controlType": "input",
           "label": "host",
           "tooltip": "",
-          "settingsObjectPath": "server.host",
+          "dataObjectPath": "server.host",
           "defaultValue": "",
           "required": false,
           "type": "string",
@@ -212,7 +212,7 @@ in realtime at each keypress if necessary.
           "controlType": "input",
           "label": "port",
           "tooltip": "",
-          "settingsObjectPath": "server.port",
+          "dataObjectPath": "server.port",
           "defaultValue": 80,
           "required": false,
           "type": "integer",
@@ -224,7 +224,7 @@ in realtime at each keypress if necessary.
           "controlType": "dropdown",
           "label": "protocol",
           "tooltip": "",
-          "settingsObjectPath": "server.protocol",
+          "dataObjectPath": "server.protocol",
           "defaultValue": "http",
           "values": [
             "http",

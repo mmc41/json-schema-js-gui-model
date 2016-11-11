@@ -58,7 +58,7 @@ export interface GuiElementBase {
      * Lodash.get method or mariocasciaro's object-path (https://github.com/mariocasciaro/object-path).
      * This string is unique for all elements in a model and may thus be used as a key if needed.
      */
-  readonly settingsObjectPath: string;
+  readonly dataObjectPath: string;
   readonly required: boolean;
 }
 

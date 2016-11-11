@@ -6,11 +6,11 @@ import { GuiModel, Group, GuiElement, SubDataType,
 
 /**
  * Process a json schema node. This can either be the root or an object inside it when called recursively from within each property.
- * @param settingsKeyPath The corresponding object path in the settings object for the schema element. Used by clients of gui model.
+ * @param dataKeyPath The corresponding object path in the schema instance (data) object for the schema element. Used by clients of gui model.
  * @param schemaPath The path of the element inside the schema itself. Used for error reporting.
  * @param accumulatedErrors A mutable(!) array where any errors during processing are appended.
  */
-function processProperties(obj: JsonSchema, settingsKeyPath: string, schemaPath: string, accumulatedErrors: TranslationError[]): GuiElement[] {
+function processProperties(obj: JsonSchema, dataKeyPath: string, schemaPath: string, accumulatedErrors: TranslationError[]): GuiElement[] {
     let result: GuiElement[] = [];
 
     let properties = obj.properties || {};
@@ -18,9 +18,9 @@ function processProperties(obj: JsonSchema, settingsKeyPath: string, schemaPath:
 
     for (let key in properties) {
         if (properties.hasOwnProperty(key)) {
-            validate(key, 'key', 'string', (v) => isString(v), settingsKeyPath, accumulatedErrors);
+            validate(key, 'key', 'string', (v) => isString(v), dataKeyPath, accumulatedErrors);
 
-            let settingsPropertyKeyPath = (settingsKeyPath === '') ? key : settingsKeyPath + '.' + key;
+            let settingsPropertyKeyPath = (dataKeyPath === '') ? key : dataKeyPath + '.' + key;
             let schemaPropertyPath = (schemaPath === '') ? 'properties.' + key : schemaPath + '.' + 'properties.' + key;
 
             let requiredItem = requiredKeys.has(key);
@@ -145,7 +145,7 @@ function createNumberField(key: string, objectPath: string, label: string, toolt
         controlType: values && values.length > 0  ? 'dropdown' : 'input',
         label: label,
         tooltip: tooltip,
-        settingsObjectPath: objectPath,
+        dataObjectPath: objectPath,
         defaultValue: defaultValue,
         required: required,
         type: 'number',
@@ -165,7 +165,7 @@ function createIntegerField(key: string, objectPath: string, label: string, tool
         controlType: values && values.length > 0  ? 'dropdown' : 'input',
         label: label,
         tooltip: tooltip,
-        settingsObjectPath: objectPath,
+        dataObjectPath: objectPath,
         defaultValue: defaultValue,
         values: values ? Object.freeze(values) : values,
         required: required,
@@ -185,7 +185,7 @@ function createBooleanField(key: string, objectPath: string, label: string, tool
         controlType: 'yesno',
         label: label,
         tooltip: tooltip,
-        settingsObjectPath: objectPath,
+        dataObjectPath: objectPath,
         defaultValue: defaultValue,
         values: values ? Object.freeze(values) : values,
         required: required,
@@ -205,7 +205,7 @@ function createStringField(key: string, objectPath: string, label: string, toolt
         controlType: values && values.length > 0 ? 'dropdown' : 'input',
         label: label,
         tooltip: tooltip,
-        settingsObjectPath: objectPath,
+        dataObjectPath: objectPath,
         defaultValue: defaultValue,
         values: values ? Object.freeze(values) : values,
         required: required,
@@ -222,7 +222,7 @@ function createGroupProperty(key: string, objectPath: string, label: string, too
         kind: 'group',
         name: key,
         controlType: 'group',
-        settingsObjectPath: objectPath,
+        dataObjectPath: objectPath,
         label: label,
         tooltip: tooltip,
         isRoot: false,
@@ -301,7 +301,7 @@ export class GuiModelMapper {
       kind: 'group',
       name: '',
       controlType: 'group',
-      settingsObjectPath: '',
+      dataObjectPath: '',
       label: '',
       tooltip: '',
       isRoot: true,
