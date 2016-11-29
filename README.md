@@ -1,5 +1,11 @@
 # json-schema-js-gui-model
-Handy framework-agnostic gui model and associated translator that can be used as a basis when constructing 
+
+Use this library when you need to construct many different custom UI forms that shares common
+characteristics, want to be in charge of how exactly your UI form should present itself, want to
+pick your own web framework for the UI, and want to use a json schema to drive the UI forms
+but finds json schema complex to process and lacking of UI information.
+
+This library contains a handy framework-agnostic gui model and associated translator that can be used as a basis when constructing 
 dynamic javascript UI forms (in any web framework) from json-schemas. For details, refer to the declared gui
 model [here](src/lib/gui-model.ts) and the translator declared at the bottom of this [file](src/lib/gui-model.mapper.ts).
 
@@ -8,7 +14,7 @@ dynamically using the gui model provided by this library. Such UI code will be
 different depending on the exact web framework used and this out of scope of this more
 fundamental and general project.
 
-This library is on purpose keept small with no runtime-dependencies. It can be used from both nodejs v6+ 
+This library is on purpose keept small with few runtime-dependencies. It can be used from both nodejs v6+ 
 and with a modern es6 capable browser.
 
 ## Getting started
@@ -121,7 +127,6 @@ in realtime at each keypress if necessary.
   "dataObjectPath": "",
   "label": "",
   "tooltip": "",
-  "isRoot": true,
   "required": true,
   "elements": [
     {
@@ -131,7 +136,6 @@ in realtime at each keypress if necessary.
       "dataObjectPath": "authentication",
       "label": "Authentication",
       "tooltip": "an authentication description here",
-      "isRoot": false,
       "required": false,
       "elements": [
         {
@@ -191,7 +195,6 @@ in realtime at each keypress if necessary.
       "dataObjectPath": "server",
       "label": "Server",
       "tooltip": "",
-      "isRoot": false,
       "required": false,
       "elements": [
         {
@@ -248,7 +251,8 @@ in realtime at each keypress if necessary.
 
 ## Status and future plans
 
-The current version appears to work fine in my own project but has not been tested beyond that.
+The current version appears to work fine in my own project but has not been tested beyond that. Some advanced
+schema constructs like links are not yet supported.
 
 I am considering to support some kind of json schema ui extensions in order to construct a even more detailed gui model.
 

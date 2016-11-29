@@ -1,6 +1,6 @@
 {
   "name": "json-schema-js-gui-model",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Handy gui model and associated translator that is useful when constructing javascript UI forms from json-schemas",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,6 +20,7 @@
   "files": [
     "dist",
     "LICENSE",
+    "CHANGELOG.md",
     "README.md"
   ],
   "repository": {
@@ -41,6 +42,7 @@
   "homepage": "https://github.com/mmc41/json-schema-js-gui-model#readme",
   "devDependencies": {
     "@types/chai": "3.4.34",
+    "@types/core-js": "0.9.34",
     "@types/mocha": "2.2.32",
     "@types/node": "6.0.46",
     "chai": "3.5.0",
@@ -61,5 +63,8 @@
     "ghooks": {
       "pre-commit": "npm run test"
     }
+  },
+  "dependencies": {
+    "core-js": "2.4.1"
   }
 }

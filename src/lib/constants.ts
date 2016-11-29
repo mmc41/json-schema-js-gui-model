@@ -10,7 +10,6 @@ export let EMPTY_GUI_MODEL: GuiModel  = Object.freeze<GuiModel>({
     label: '',
     tooltip: '',
     dataObjectPath: '',
-    isRoot: true,
     required: true,
     elements: [],
     errors: []
@@ -23,7 +22,6 @@ export let EMPTY_GUI_MODEL_GROUP: Group = Object.freeze<Group>({
     label: '',
     tooltip: '',
     dataObjectPath: '',
-    isRoot: false,
     required: true,
     elements: []
 });

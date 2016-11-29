@@ -83,7 +83,6 @@ export interface TypedField<T> extends FieldBase {
 export interface Group extends GuiElementBase {
   readonly kind: 'group';
   readonly elements: GuiElement[];
-  readonly isRoot: boolean;
 }
 
 export interface TranslationError {

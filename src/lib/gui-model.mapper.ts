@@ -1,3 +1,6 @@
+"use strict";
+
+import 'core-js/library';
 import { JsonSchema } from '../dependencies/json-schema';
 import { isString, isNumber, isBoolean, isIntegerNumber, isArray, isObject } from './type-utils';
 
@@ -225,7 +228,6 @@ function createGroupProperty(key: string, objectPath: string, label: string, too
         dataObjectPath: objectPath,
         label: label,
         tooltip: tooltip,
-        isRoot: false,
         required: required,
         elements: Object.freeze(elements)
     });
@@ -282,7 +284,7 @@ export class GuiModelMapper {
   * Converts a json schema into an immutable gui model. In case of errors, the associated error array will be non-empty and the 
   * resulting gui model may be invalid.
   */
-  mapToGuiModel(schema: JsonSchema): GuiModel {
+  public mapToGuiModel(schema: JsonSchema): GuiModel {
     // Setup mutable error reporting array that will have values added during procesing in case of errors.
     let errors: TranslationError[] = [];
 
@@ -304,7 +306,6 @@ export class GuiModelMapper {
       dataObjectPath: '',
       label: '',
       tooltip: '',
-      isRoot: true,
       required: true,
       elements: Object.freeze(result),
       errors: Object.freeze(errors)

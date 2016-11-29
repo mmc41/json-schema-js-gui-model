@@ -1,4 +1,7 @@
 /* tslint:disable:max-line-length */
+"use strict";
+
+import 'core-js/library';
 
 import { JsonSchema } from '../dependencies/json-schema';
 import { GuiModelMapper } from '../lib/gui-model.mapper';
