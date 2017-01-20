@@ -1,6 +1,6 @@
 # json-schema-js-gui-model
 
-Use this library when you need to construct many different custom UI forms that shares common
+Use this library typescript/javascript library when you need to construct many different custom UI forms that shares common
 characteristics, want to be in charge of how exactly your UI form should present itself, want to
 pick your own web framework for the UI, and want to use a json schema to drive the UI forms
 but finds json schema complex to process and lacking of UI information.
@@ -15,7 +15,7 @@ different depending on the exact web framework used and this out of scope of thi
 fundamental and general project.
 
 This library is on purpose keept small with few runtime-dependencies. It can be used from both nodejs v6+ 
-and with a modern es6 capable browser.
+and with a es5 capable browser.
 
 ## Getting started
 
@@ -24,7 +24,7 @@ and with a modern es6 capable browser.
 Schemas can be translated using the exported GuiModelMapper class or by the the command line
 command *mapToGuiModel* when the library is installed with -g option by npm.
 
-Code:
+Code (typescript example):
 ```typescript
 import { GuiModelMapper, GuiModel, JsonSchema } from 'json-schema-js-gui-model';
 

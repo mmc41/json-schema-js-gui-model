@@ -74,7 +74,7 @@ export interface FieldBase extends GuiElementBase {
 
 export interface TypedField<T> extends FieldBase {
   readonly defaultValue: T;
-  readonly values?: T[];
+  readonly values?: ReadonlyArray<T>;
 }
 
 /**
@@ -82,7 +82,7 @@ export interface TypedField<T> extends FieldBase {
  */
 export interface Group extends GuiElementBase {
   readonly kind: 'group';
-  readonly elements: GuiElement[];
+  readonly elements: ReadonlyArray<GuiElement>;
 }
 
 export interface TranslationError {
@@ -94,7 +94,7 @@ export interface TranslationError {
  * Represents a full gui model. Essentially a group but with an extra errors field.
  */
 export interface GuiModel extends Group {
-  readonly errors: TranslationError[];
+  readonly errors: ReadonlyArray<TranslationError>;
 }
 
 export type Field = TypedField<string> | TypedField<number> | TypedField<boolean>;
