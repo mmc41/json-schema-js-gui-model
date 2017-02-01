@@ -47,7 +47,7 @@ function processProperties(obj: JsonSchema, dataKeyPath: string, schemaPath: str
 /**
  * Process a json schema key/value property definition.  
  */
-function processProperty(key: string, value: any, requiredItem: boolean, keyPath: string, schemaPath: string, accumulatedErrors: TranslationError[]): GuiElement {
+function processProperty(key: string, value: any, requiredItem: boolean, keyPath: string, schemaPath: string, accumulatedErrors: TranslationError[]): GuiElement | null {
     let type = value.type;
     if (!isString(type)) {
         addError(accumulatedErrors, 'Type elements must be strings (not ' + typeof type + ') ', schemaPath);
@@ -75,7 +75,7 @@ function processProperty(key: string, value: any, requiredItem: boolean, keyPath
 
         validateField(type, dataSubType, defaultValue, enumValues, keyPath, schemaPath, requiredItem, accumulatedErrors);
 
-        let prop: GuiElement;
+        let prop: GuiElement | null;
         switch (type) {
             case 'number':  prop = createNumberField(key, keyPath, label, tooltip, defaultValue, requiredItem, dataSubType, enumValues);
                             break;
@@ -141,7 +141,7 @@ function validateField(type: string, dataSubType: SubDataType, defaultValue: any
  * Create an immutable gui input dropdown element for a number, making any contained objects immutable in the process.
  */
 function createNumberField(key: string, objectPath: string, label: string, tooltip: string, defaultValue: number,
-                           required: boolean, dataType: SubDataType, values: number[] = undefined): TypedField<number> {
+                           required: boolean, dataType: SubDataType, values: (number[] | undefined) = undefined): TypedField<number> {
     return Object.freeze<TypedField<number>>({
         kind: 'field',
         name: key,
@@ -161,7 +161,7 @@ function createNumberField(key: string, objectPath: string, label: string, toolt
  * Create an immutable gui input dropdown element for an integer, making any contained objects immutable in the process.
  */
 function createIntegerField(key: string, objectPath: string, label: string, tooltip: string, defaultValue: number,
-                            required: boolean, dataType: SubDataType, values: number[] = undefined): TypedField<number> {
+                            required: boolean, dataType: SubDataType, values: (number[] | undefined) = undefined): TypedField<number> {
     return Object.freeze<TypedField<number>>({
         kind: 'field',
         name: key,
@@ -181,7 +181,7 @@ function createIntegerField(key: string, objectPath: string, label: string, tool
  * Create an immutable gui input element for a boolean, making any contained objects immutable in the process.
  */
 function createBooleanField(key: string, objectPath: string, label: string, tooltip: string, defaultValue: boolean,
-                            required: boolean, dataType: SubDataType, values: boolean[] = undefined): TypedField<boolean> {
+                            required: boolean, dataType: SubDataType, values: (boolean[] | undefined) = undefined): TypedField<boolean> {
     return Object.freeze<TypedField<boolean>>({
         kind: 'field',
         name: key,
@@ -201,7 +201,7 @@ function createBooleanField(key: string, objectPath: string, label: string, tool
  * Create an immutable gui input dropdown element for a string, making any contained objects immutable in the process.
  */
 function createStringField(key: string, objectPath: string, label: string, tooltip: string, defaultValue: string,
-                           required: boolean, dataType: SubDataType, values: string[] = undefined): TypedField<string> {
+                           required: boolean, dataType: SubDataType, values: (string[] | undefined) = undefined): TypedField<string> {
     return Object.freeze<TypedField<string>>({
         kind: 'field',
         name: key,

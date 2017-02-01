@@ -13,8 +13,11 @@
         "allowJs": false,
         "removeComments": false,
         "forceConsistentCasingInFileNames": true,
+        "noImplicitAny": true,
         "noImplicitReturns": true,
+        "suppressImplicitAnyIndexErrors": true,
         "noFallthroughCasesInSwitch": true,
+        "strictNullChecks": true,
         "pretty": true,
         "listFiles": false,
         "listEmittedFiles": false

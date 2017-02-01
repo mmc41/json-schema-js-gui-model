@@ -23,7 +23,9 @@
  */
 
 // Adapted from: https://gist.github.com/enriched/c84a2a99f886654149908091a3183e15
-// with following changes: format attribute added.
+// with a few changes such as:
+// * format attribute added.
+// * type of $schema is a string
 
 export interface JsonSchema {
   $ref?: string;
@@ -39,7 +41,7 @@ export interface JsonSchema {
    * It is recommended that the meta-schema is
    * included in the root of any JSON Schema
    */
-  $schema?: JsonSchema;
+  $schema?: string;
   /**
    * Title of the schema
    */

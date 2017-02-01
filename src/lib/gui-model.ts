@@ -60,6 +60,7 @@ export interface GuiElementBase {
      */
   readonly dataObjectPath: string;
   readonly required: boolean;
+  readonly comment?: string;
 }
 
 
@@ -73,8 +74,8 @@ export interface FieldBase extends GuiElementBase {
 };
 
 export interface TypedField<T> extends FieldBase {
-  readonly defaultValue: T;
-  readonly values?: ReadonlyArray<T>;
+  readonly defaultValue: T | null;
+  readonly values?: ReadonlyArray<T | null>;
 }
 
 /**

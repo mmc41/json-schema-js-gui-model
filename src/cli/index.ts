@@ -20,7 +20,7 @@ const usageString = 'Usage: ' + npmCmd + ' sourcePath destPath';
 /**
  * Help that abouts with error output
  */
-function failure(msg) {
+function failure(msg: string) {
     console.error(msg);
     exit(-1);
 }
@@ -35,7 +35,7 @@ let sourcePath = userArgs[0];
 let destPath = userArgs[1];
 
 // Read input:
-let source: string;
+let source: string = '';
 
 if (!existsSync(sourcePath)) {
     failure('Error. Could not locate source file \"' + sourcePath + '\".');
