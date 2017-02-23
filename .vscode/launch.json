@@ -4,24 +4,36 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
-            "type": "node",
+            "type": "node2",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-            "stopOnEntry": false,
-            "args": ["--no-timeouts", "--colors", "dist/test/index.js"],
+            "name": "Mocha Tests",
             "cwd": "${workspaceRoot}",
-            "runtimeExecutable": null,
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/mocha",
+            "windows": {
+                "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/mocha.cmd"
+            },
+            "runtimeArgs": [
+                "-u",
+                "bdd",
+                "--timeout",
+                "999999",
+                "--colors",
+                "${workspaceRoot}/dist/test/index.js"
+            ],
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart",
+            "stopOnEntry": false,
+            "smartStep": true,
+            "skipFiles": [
+			    "${workspaceRoot}/node_modules/**/'.js"
+		    ],
+            "preLaunchTask": "build",
+            "restart": false,
             "env": {
                 "NODE_ENV": "testing"
             }
-        },
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "Attach to Process",
-            "port": 5858
         }
     ]
 }
