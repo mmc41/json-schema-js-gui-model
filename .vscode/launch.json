@@ -27,7 +27,7 @@
             "stopOnEntry": false,
             "smartStep": true,
             "skipFiles": [
-			    "${workspaceRoot}/node_modules/**/'.js"
+			    "${workspaceRoot}/node_modules/**/*.js"
 		    ],
             "preLaunchTask": "build",
             "restart": false,
